@@ -4,7 +4,7 @@
     <div class="movies">
       <Movie v-for="movie in movieData.results" :key="movie.id" :movie="movie"></Movie>
     </div>
-    <div style="margin:auto">
+    <div style="margin:auto;margin-top:5%">
       <button
         class="btn"
         :class="{'btn-disabled':firstPage,'btn-primary':!firstPage}"
@@ -89,6 +89,7 @@ export default {
 .movies {
   display: grid;
   grid-template-columns: auto auto auto;
+  grid-auto-flow: row;
 }
 .btn {
   width: 200px;

@@ -1,7 +1,9 @@
 <template>
   <div id="app">
     <div class="navbar">
-      <h2 style="margin:0;margin-left:20px;color:white">MoviesHub</h2>
+      <router-link to="/">
+        <h2 style="margin:0;margin-left:20px;color:white">MoviesHub</h2>
+      </router-link>
       <div class="nav-links">
         <router-link class="a" to="/top-rated">Top Rated</router-link>
         <router-link class="a" to="/upcoming">Upcoming</router-link>
