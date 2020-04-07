@@ -1,10 +1,20 @@
 <template>
-  <div class="loader"></div>
+  <div>
+    <div v-if="isOnline" style="margin:auto" class="loader"></div>
+    <div v-else>
+      <h1>You are Offline</h1>
+    </div>
+  </div>
 </template>
 
 <script>
 export default {
-  name: "Loader"
+  name: "Loader",
+  computed: {
+    isOnline() {
+      return window.navigator.onLine;
+    }
+  }
 };
 </script>
 

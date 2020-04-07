@@ -66,7 +66,6 @@ export default {
         )
         .then(response => {
           this.movieData = response.data;
-          console.log(this.movieData);
           this.page_no = this.movieData.page;
           this.loading = false;
         });
@@ -82,7 +81,6 @@ export default {
     gotoPage(page_no) {
       this.page_no = page_no;
       this.getMovieData();
-      console.log(this.page_no);
     }
   },
   computed: {
@@ -104,6 +102,7 @@ export default {
   margin: 0 10%;
 }
 .btn {
+  padding: 1px;
   width: 15%;
   height: 30px;
   border-radius: 2px;

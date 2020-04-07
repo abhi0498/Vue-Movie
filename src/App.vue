@@ -25,6 +25,7 @@ export default {
 .a {
   color: white;
   text-decoration: none;
+  text-align: center;
 }
 .a:visited {
   color: white;
@@ -71,5 +72,12 @@ body {
   display: flex;
   justify-content: space-around;
   width: 20%;
+}
+
+@media (max-width: 600px) {
+  .nav-links {
+    margin: 10px;
+    width: 50%;
+  }
 }
 </style>

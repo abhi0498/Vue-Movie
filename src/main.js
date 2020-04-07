@@ -5,6 +5,7 @@ import VueAxios from 'vue-axios'
 import Vuex from 'vuex'
 import store from './store/index'
 import router from './router/index'
+import './registerServiceWorker'
 Vue.use(Vuex)
 Vue.use(VueAxios, axios)
 Vue.config.productionTip = false
