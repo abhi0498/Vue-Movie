@@ -61,9 +61,10 @@ body {
   align-items: center;
   justify-content: space-between;
   top: 0;
-  width: 100%;
+  width: auto;
   height: 8vh;
   background-color: #6639b6;
+  z-index: 100;
 }
 .nav-links {
   margin: 20px;

@@ -1,8 +1,15 @@
 <template>
   <div>
     <h1>Top Rated Movies</h1>
-    <div class="movies">
-      <Movie v-for="movie in movieData.results" :key="movie.id" :movie="movie"></Movie>
+    <Loader v-if="loading" style="margin:auto;"></Loader>
+
+    <div v-else class="movies row">
+      <Movie
+        class="col-md col-lg col-sm"
+        v-for="movie in movieData.results"
+        :key="movie.id"
+        :movie="movie"
+      ></Movie>
     </div>
     <div style="margin:auto;margin-top:5%">
       <button
@@ -36,14 +43,16 @@
 
 <script>
 import Movie from "./Movie";
+import Loader from "./Loader";
 export default {
   data: () => ({
     movieData: [],
     page_no: 1,
-    last_page: 355
+    last_page: 355,
+    loading: true
   }),
   name: "Movies",
-  components: { Movie },
+  components: { Movie, Loader },
   beforeMount() {
     this.getMovieData();
   },
@@ -57,6 +66,7 @@ export default {
           this.movieData = response.data;
           console.log(this.movieData);
           this.page_no = this.movieData.page;
+          this.loading = false;
         });
     },
     nextPage() {
@@ -85,14 +95,14 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
+<style>
 .movies {
-  display: grid;
-  grid-template-columns: auto auto auto;
-  grid-auto-flow: row;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 10%;
 }
 .btn {
-  width: 200px;
+  width: 15%;
   height: 30px;
   border-radius: 2px;
   border: 0;
@@ -123,5 +133,27 @@ a {
 a:visited {
   color: black;
   text-decoration: none;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-gap: 20px;
+}
+
+@media (max-width: 6000px) {
+  .col-lg {
+    grid-column: span 2;
+  }
+}
+@media (max-width: 1200px) {
+  .col-md {
+    grid-column: span 4;
+  }
+}
+@media (max-width: 600px) {
+  .col-sm {
+    grid-column: span 6;
+  }
 }
 </style>

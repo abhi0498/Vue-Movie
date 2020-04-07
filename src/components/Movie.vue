@@ -1,20 +1,24 @@
 <template>
   <router-link :to="movie_url">
     <div class="movie">
-      <img :src="image_full_url" alt srcset />
+      <img :src="image_full_url" :alt="this.movie.title" srcset />
 
-      <h2>{{this.movie.title}}</h2>
+      <h4>{{this.movie.title}}</h4>
 
       <div v-if="movie.vote_count!= undefined">
         <div class="rating-details">
           <div>
             Average Rating:
-            <span :style="{color:color}">{{this.movie.vote_average}}</span>
+            <span :style="{color:color}">
+              <h4 style="display:inline">{{this.movie.vote_average}}</h4>
+            </span>
           </div>
 
-          <div>
-            No. of votes:
-            <span>{{this.movie.vote_count}}</span>
+          <div style="padding:2%">
+            <span>No. of votes:</span>
+            <span>
+              <strong>{{this.movie.vote_count}}</strong>
+            </span>
           </div>
         </div>
       </div>
@@ -32,17 +36,18 @@ export default {
     movie_url: ""
   }),
   created() {
-    this.image_full_url = `${this.image_base_url}${this.movie.poster_path}?api_key=${process.env.VUE_APP_API_KEY}`;
+    this.image_full_url = `${this.image_base_url}${this.movie.poster_path}?api_key=${process.env.VUE_APP_API_KEY}`; //Building urls for required images and pages.
     this.movie_url = `/movie/${this.movie.id}`;
   },
   computed: {
+    //returns color based on Movie rating
     color() {
       if (this.movie.vote_average >= 7) {
-        return "green";
+        return "#388e3c";
       } else if (this.movie.vote_average >= 4 && this.movie.vote_average < 7) {
-        return "yellow";
+        return "#ffc400";
       } else {
-        return "red";
+        return "#c62828";
       }
     }
   }
@@ -52,15 +57,20 @@ export default {
 <style scoped>
 .movie {
   border: 1px solid #666;
-  margin: 4px;
   border-radius: 5%;
+  margin: 1%;
+  width: 100%;
+  height: 100%;
+  word-wrap: break-word;
 }
+
 img {
   border-radius: 5% 5% 0% 0%;
+  width: 100%;
 }
 .rating-details {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-around;
 }
 </style>

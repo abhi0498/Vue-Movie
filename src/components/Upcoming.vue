@@ -1,8 +1,13 @@
 <template>
   <div>
     <h1>Upcoming Movies</h1>
-    <div class="movies">
-      <Movie v-for="movie in movieData.results" :key="movie.id" :movie="movie"></Movie>
+    <div class="movies row">
+      <Movie
+        class="col-sm col-md col-lg"
+        v-for="movie in movieData.results"
+        :key="movie.id"
+        :movie="movie"
+      ></Movie>
     </div>
     <div style="margin:auto">
       <button
@@ -48,6 +53,7 @@ export default {
     this.getMovieData();
   },
   methods: {
+    //Retrieve data from API and store it in components data.
     getMovieData() {
       this.$http
         .get(
@@ -67,6 +73,7 @@ export default {
       this.page_no -= 1;
       this.gotoPage(this.page_no);
     },
+    //loads data required for the requested page
     gotoPage(page_no) {
       this.page_no = page_no;
       this.getMovieData();
@@ -86,22 +93,6 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style >
-.movies {
-  display: grid;
-  grid-template-columns: auto auto auto;
-  margin: 0 10%;
-}
-.btn {
-  width: 200px;
-  height: 30px;
-  border-radius: 2px;
-  border: 0;
-  transition: 0.2s ease-out;
-  color: #fff;
-  margin: 6px;
-  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
-}
-
 .btn:hover {
   color: #fff;
   box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);

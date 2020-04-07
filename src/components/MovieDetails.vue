@@ -30,8 +30,8 @@
       <tr>
         <td class="name">Genres</td>
 
-        <td>
-          <div v-for="genre in movie.genres" :key="genre.id">{{genre.name}}</div>
+        <td style="display:flex;justify-content:space-around; ">
+          <div style v-for="genre in movie.genres" :key="genre.id">{{genre.name}}</div>
         </td>
       </tr>
       <tr>
@@ -89,14 +89,15 @@ export default {
     image_full_url: ""
   }),
   created() {
+    //Request API for specific movie data. Movie ID is  extracted  from URL params and sent to API.
     this.$http
       .get(
         `https://api.themoviedb.org/3/movie/${this.$route.params.movie_id}?api_key=${process.env.VUE_APP_API_KEY}&language=en-US`
       )
       .then(response => {
-        this.movie = response.data;
+        this.movie = response.data; //storing recieved data in component.
         console.log(this.movie);
-        this.image_full_url = `${this.image_base_url}${this.movie.poster_path}?api_key=${process.env.VUE_APP_API_KEY}`;
+        this.image_full_url = `${this.image_base_url}${this.movie.poster_path}?api_key=${process.env.VUE_APP_API_KEY}`; //Building requireed fromatt for image URL.
       });
   },
   methods: {
