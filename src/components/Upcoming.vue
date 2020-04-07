@@ -2,12 +2,7 @@
   <div>
     <h1>Upcoming Movies</h1>
     <div class="movies">
-      <Movie
-        v-for="movie in movieData.results"
-        :key="movie.id"
-        :title="movie.title"
-        :imageURL="movie.poster_path"
-      ></Movie>
+      <Movie v-for="movie in movieData.results" :key="movie.id" :movie="movie"></Movie>
     </div>
     <div style="margin:auto">
       <button
@@ -45,7 +40,7 @@ export default {
   data: () => ({
     movieData: [],
     page_no: 1,
-    last_page: 355
+    last_page: 14
   }),
   name: "Movies",
   components: { Movie },
@@ -94,6 +89,7 @@ export default {
 .movies {
   display: grid;
   grid-template-columns: auto auto auto;
+  margin: 0 10%;
 }
 .btn {
   width: 200px;

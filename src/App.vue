@@ -1,10 +1,10 @@
 <template>
   <div id="app">
     <div class="navbar">
-      <h2 style="margin:0;margin-left:20px;">MoviesHub</h2>
+      <h2 style="margin:0;margin-left:20px;color:white">MoviesHub</h2>
       <div class="nav-links">
-        <router-link to="/top-rated">Top Rated</router-link>
-        <router-link to="/upcoming">Upcoming</router-link>
+        <router-link class="a" to="/top-rated">Top Rated</router-link>
+        <router-link class="a" to="/upcoming">Upcoming</router-link>
       </div>
     </div>
     <router-view></router-view>
@@ -20,12 +20,21 @@ export default {
 </script>
 
 <style>
-a {
+.a {
   color: white;
   text-decoration: none;
 }
-a:visited {
+.a:visited {
   color: white;
+  text-decoration: none;
+}
+
+a {
+  color: black;
+  text-decoration: none;
+}
+a:visited {
+  color: black;
   text-decoration: none;
 }
 
@@ -52,7 +61,7 @@ body {
   top: 0;
   width: 100%;
   height: 8vh;
-  background-color: #45aaaa;
+  background-color: #6639b6;
 }
 .nav-links {
   margin: 20px;

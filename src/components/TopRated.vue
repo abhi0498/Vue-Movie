@@ -2,12 +2,7 @@
   <div>
     <h1>Top Rated Movies</h1>
     <div class="movies">
-      <Movie
-        v-for="movie in movieData.results"
-        :key="movie.id"
-        :title="movie.title"
-        :imageURL="movie.poster_path"
-      ></Movie>
+      <Movie v-for="movie in movieData.results" :key="movie.id" :movie="movie"></Movie>
     </div>
     <div style="margin:auto">
       <button
@@ -90,7 +85,7 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style >
+<style scoped>
 .movies {
   display: grid;
   grid-template-columns: auto auto auto;
@@ -119,5 +114,13 @@ export default {
 .btn-primary:hover,
 .btn-primary:focus {
   background-color: #5a95f5 !important;
+}
+a {
+  color: black;
+  text-decoration: none;
+}
+a:visited {
+  color: black;
+  text-decoration: none;
 }
 </style>
