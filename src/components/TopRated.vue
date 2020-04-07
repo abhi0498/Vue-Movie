@@ -58,6 +58,8 @@ export default {
   },
   methods: {
     getMovieData() {
+      this.loading = true;
+
       this.$http
         .get(
           `https://api.themoviedb.org/3/movie/top_rated?api_key=${process.env.VUE_APP_API_KEY}&language=en-US&page=${this.page_no}`

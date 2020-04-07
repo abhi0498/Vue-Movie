@@ -1,7 +1,9 @@
 <template>
   <div>
     <h1>Upcoming Movies</h1>
-    <div class="movies row">
+    <Loader v-if="loading" style="margin:auto;"></Loader>
+
+    <div v-else class="movies row">
       <Movie
         class="col-sm col-md col-lg"
         v-for="movie in movieData.results"
@@ -41,20 +43,24 @@
 
 <script>
 import Movie from "./Movie";
+import Loader from "./Loader";
+
 export default {
   data: () => ({
     movieData: [],
     page_no: 1,
-    last_page: 14
+    last_page: 14,
+    loading: true
   }),
   name: "Movies",
-  components: { Movie },
+  components: { Movie, Loader },
   beforeMount() {
     this.getMovieData();
   },
   methods: {
     //Retrieve data from API and store it in components data.
     getMovieData() {
+      this.loading = true;
       this.$http
         .get(
           `https://api.themoviedb.org/3/movie/upcoming?api_key=${process.env.VUE_APP_API_KEY}&language=en-US&page=${this.page_no}`
@@ -63,6 +69,7 @@ export default {
           this.movieData = response.data;
           console.log(this.movieData);
           this.page_no = this.movieData.page;
+          this.loading = false;
         });
     },
     nextPage() {
