@@ -183,7 +183,7 @@ a:visited {
     grid-gap: 20px;
   }
   .company-logo {
-    width: 80%;
+    width: 60%;
     margin: 10%;
   }
 }
