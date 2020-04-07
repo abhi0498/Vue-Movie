@@ -2,7 +2,7 @@
   <div id="app">
     <div class="navbar">
       <router-link to="/">
-        <h2 style="margin:0;margin-left:20px;color:white">MoviesHub</h2>
+        <h2 style="margin:0;margin-left:20px;color:white">MoviesDB</h2>
       </router-link>
       <div class="nav-links">
         <router-link class="a" to="/top-rated">Top Rated</router-link>
